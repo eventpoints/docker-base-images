@@ -37,8 +37,7 @@ if [ "$1" = 'php-fpm' ] || [ "$1" = 'php' ] || [ "$1" = 'bin/console' ]; then
 
     bin/console doctrine:migrations:migrate --no-interaction
 
-	setfacl -R -m u:www-data:rwX -m u:"$(whoami)":rwX var
-	setfacl -dR -m u:www-data:rwX -m u:"$(whoami)":rwX var
+	chmod 777 -R var
 fi
 
 exec docker-php-entrypoint "$@"
