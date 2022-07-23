@@ -9,6 +9,10 @@
     }
 }
 
+www.residewise.com {
+    redir https://residewise.com{uri}
+}
+
 {$SERVER_NAME}
 
 log
