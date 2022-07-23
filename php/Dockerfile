@@ -24,16 +24,22 @@ RUN chmod +x /usr/local/bin/docker-healthcheck
 HEALTHCHECK --interval=10s --timeout=3s --retries=3 CMD ["docker-healthcheck"]
 
 COPY php-fpm.d/zz-docker.conf /usr/local/etc/php-fpm.d/zz-docker.conf
+COPY conf.d/99-php.ini $PHP_INI_DIR/conf.d/99-php.ini
 
 COPY docker-entrypoint.sh /usr/local/bin/docker-entrypoint
 RUN chmod +x /usr/local/bin/docker-entrypoint
 
-ENV COMPOSER_MEMORY_LIMIT=-1
-ENV COMPOSER_ALLOW_SUPERUSER=1
-ENV PATH="${PATH}:/root/.composer/vendor/bin"
+ENV COMPOSER_MEMORY_LIMIT=-1 \
+    COMPOSER_ALLOW_SUPERUSER=1 \
+    PATH="${PATH}:/root/.composer/vendor/bin" \
+    PHP_OPCACHE_VALIDATE_TIMESTAMPS=1 \
+    PHP_OPCACHE_MAX_ACCELERATED_FILES=15000 \
+    PHP_OPCACHE_MEMORY_CONSUMPTION=192 \
+    PHP_OPCACHE_MAX_WASTED_PERCENTAGE=10 \
+    PHP_OPCACHE_PRELOAD="" \
+    PHP_EXPOSE_PHP="1"
 
-WORKDIR /srv/app
+WORKDIR /app
 
 ENTRYPOINT ["docker-entrypoint"]
 CMD ["php-fpm"]
-
