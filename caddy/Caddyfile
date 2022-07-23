@@ -10,7 +10,7 @@
 }
 
 www.residewise.com {
-    redir https://residewise.com{uri}
+    redir https://residewise.com{uri} permanent
 }
 
 {$SERVER_NAME}
