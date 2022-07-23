@@ -35,7 +35,11 @@ if [ "$1" = 'php-fpm' ] || [ "$1" = 'php' ] || [ "$1" = 'bin/console' ]; then
         echo "The db is now ready and reachable"
     fi
 
-    bin/console doctrine:migrations:migrate --no-interaction
+    # Uncomment once using migrations
+    # bin/console doctrine:migrations:migrate --no-interaction
+
+    # Remove once using migrations
+    bin/console doctrine:schema:update --dump-sql --force
 
 	chmod 777 -R var
 fi
