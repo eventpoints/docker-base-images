@@ -9,10 +9,6 @@
     }
 }
 
-www.residewise.com {
-    redir https://residewise.com{uri} permanent
-}
-
 {$SERVER_NAME}
 
 log
@@ -34,7 +30,6 @@ route {
         {$MERCURE_EXTRA_DIRECTIVES}
     }
 
-    vulcain
     push
     php_fastcgi unix//var/run/php/php-fpm.sock
     encode zstd gzip
