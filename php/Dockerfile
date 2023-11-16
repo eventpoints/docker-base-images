@@ -16,7 +16,7 @@ RUN install-php-extensions \
     imagick \
     uuid \
     opcache \
-    xdebug-^3.1
+    xdebug
 
 COPY docker-healthcheck.sh /usr/local/bin/docker-healthcheck
 RUN chmod +x /usr/local/bin/docker-healthcheck
