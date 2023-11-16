@@ -1,4 +1,4 @@
-FROM php:8.1-fpm AS symfony_php
+FROM php:8.2-fpm AS symfony_php
 
 # persistent / runtime deps
 RUN apt-get update && apt-get install -y \
