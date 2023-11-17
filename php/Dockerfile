@@ -1,4 +1,4 @@
-FROM php:8.1-fpm AS symfony_php
+FROM php:8.2-fpm AS symfony_php
 
 # persistent / runtime deps
 RUN apt-get update && apt-get install -y \
@@ -6,7 +6,7 @@ RUN apt-get update && apt-get install -y \
         zip
 
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
-COPY --from=mlocati/php-extension-installer:1.5.16 /usr/bin/install-php-extensions /usr/local/bin/
+COPY --from=mlocati/php-extension-installer:2.1.65 /usr/bin/install-php-extensions /usr/local/bin/
 
 RUN install-php-extensions \
     intl \
@@ -16,7 +16,7 @@ RUN install-php-extensions \
     imagick \
     uuid \
     opcache \
-    xdebug-^3.1
+    xdebug-^3.3
 
 COPY docker-healthcheck.sh /usr/local/bin/docker-healthcheck
 RUN chmod +x /usr/local/bin/docker-healthcheck
