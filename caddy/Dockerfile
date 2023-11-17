@@ -1,10 +1,10 @@
-FROM caddy:2-builder-alpine as builder
+FROM caddy as builder
 
 RUN xcaddy build \
 	--with github.com/dunglas/mercure \
 	--with github.com/dunglas/mercure/caddy
 
-FROM caddy:2 AS caddy
+FROM caddy AS caddy
 
 WORKDIR /app
 
