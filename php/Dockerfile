@@ -6,7 +6,7 @@ RUN apt-get update && apt-get install -y \
         zip
 
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
-COPY --from=mlocati/php-extension-installer:2.1.65 /usr/bin/install-php-extensions /usr/local/bin/
+COPY --from=mlocati/php-extension-installer:2.0 /usr/bin/install-php-extensions /usr/local/bin/
 
 RUN install-php-extensions \
     intl \
@@ -16,8 +16,6 @@ RUN install-php-extensions \
     imagick \
     uuid \
     opcache \
-    xdebug-^3.1 \
-&& php -m
 
 COPY docker-healthcheck.sh /usr/local/bin/docker-healthcheck
 RUN chmod +x /usr/local/bin/docker-healthcheck
