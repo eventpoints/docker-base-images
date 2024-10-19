@@ -18,7 +18,6 @@ RUN install-php-extensions \
     apcu \
     pdo_pgsql \
     imagick \
-    gd \
     uuid \
     opcache \
     xdebug-^3.3
