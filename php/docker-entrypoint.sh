@@ -36,10 +36,10 @@ if [ "$1" = 'php-fpm' ] || [ "$1" = 'php' ] || [ "$1" = 'bin/console' ]; then
     fi
 
     # Uncomment once using migrations
-    bin/console doctrine:migrations:migrate --no-interaction
+    # bin/console doctrine:migrations:migrate --no-interaction
 
     # Remove once using migrations
-    # bin/console doctrine:schema:update --dump-sql --force
+    bin/console doctrine:schema:update --dump-sql --force
 
 	chmod 777 -R var
 fi
