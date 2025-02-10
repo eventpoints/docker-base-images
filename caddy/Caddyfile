@@ -25,7 +25,10 @@ route {
     }
 
     push
-    php_fastcgi unix//var/run/php/php-fpm.sock
+    php_fastcgi unix//var/run/php/php-fpm.sock {
+        env HTTPS on
+        header_up X-Forwarded-Proto {scheme}
+    }
     encode zstd gzip
     file_server
 }
