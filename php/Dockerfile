@@ -21,7 +21,8 @@ RUN install-php-extensions \
     uuid \
     opcache \
     xdebug-^3.3 \
-    gd
+    gd \
+    xsl
 
 COPY docker-healthcheck.sh /usr/local/bin/docker-healthcheck
 RUN chmod +x /usr/local/bin/docker-healthcheck
